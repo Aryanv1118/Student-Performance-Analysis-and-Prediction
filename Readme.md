@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project predicts student final scores using a Linear Regression model. The dataset contains academic, demographic, and behavioral information about students. The objective is to analyze the factors affecting academic performance and build a machine learning model capable of estimating a student's final score.
+This project predicts student final scores using Machine Learning techniques. The dataset contains academic, demographic, and behavioral information about students. The objective is to analyze the factors influencing academic performance and build predictive models capable of estimating a student's final score.
 
 ---
 
@@ -31,16 +31,16 @@ The following preprocessing steps were performed:
 
 * Categorical Encoding
 * Feature Selection
-* Train-Test Split
+* Train / Validation / Test Splitting
 * Data Validation
 
-Categorical features were converted into numerical values to make them suitable for machine learning algorithms.
+Categorical variables were converted into numerical values to make them suitable for machine learning models.
 
 ---
 
 ## Exploratory Data Analysis (EDA)
 
-The following visualizations were generated to understand the dataset:
+The following visualizations were generated:
 
 * Pass/Fail Distribution
 * Attendance vs Final Score
@@ -58,19 +58,11 @@ All generated plots are available in the `EDA/` directory.
 
 ---
 
-## Machine Learning Model
+## Machine Learning Models
 
-### Model Used
+### 1. Linear Regression
 
-* Linear Regression
-
-### Evaluation Metrics
-
-* R² Score
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
-
-### Results
+#### Evaluation Metrics
 
 | Metric   | Value  |
 | -------- | ------ |
@@ -78,7 +70,48 @@ All generated plots are available in the `EDA/` directory.
 | MSE      | 53.93  |
 | RMSE     | 7.34   |
 
-The model explains approximately 75% of the variation in student final scores and achieves an average prediction error of around 7 marks.
+#### Observation
+
+Linear Regression explains approximately 75% of the variation in student final scores and achieves the best performance among the currently implemented models.
+
+---
+
+### 2. Decision Tree Regressor
+
+#### Hyperparameter Tuning
+
+The following hyperparameters were tuned using a validation set:
+
+* Maximum Tree Depth
+* Minimum Samples Split
+* Minimum Samples Leaf
+
+Best Parameters:
+
+* max_depth = 4
+* min_samples_split = 15
+* min_samples_leaf = 1
+
+#### Evaluation Metrics
+
+| Metric   | Value  |
+| -------- | ------ |
+| R² Score | 0.6591 |
+| MSE      | 87.65  |
+| RMSE     | 9.36   |
+
+#### Observation
+
+The Decision Tree Regressor performed worse than Linear Regression on this dataset, suggesting that the relationship between the features and target variable is predominantly linear.
+
+---
+
+## Model Comparison
+
+| Model                   | R² Score | RMSE |
+| ----------------------- | -------- | ---- |
+| Linear Regression       | 0.7516   | 7.34 |
+| Decision Tree Regressor | 0.6591   | 9.36 |
 
 ---
 
@@ -90,8 +123,9 @@ Student-Performance-Prediction/
 ├── preprocessing.py
 ├── plots.py
 ├── linear_regression.py
+├── decision_tree.py
 ├── student_performance.csv
-├── plots/
+├── EDA/
 └── README.md
 ```
 
@@ -101,6 +135,7 @@ Student-Performance-Prediction/
 
 * Python
 * Pandas
+* NumPy
 * Matplotlib
 * Seaborn
 * Scikit-Learn
@@ -109,12 +144,9 @@ Student-Performance-Prediction/
 
 ## Future Improvements
 
-* Decision Tree Regressor
 * Random Forest Regressor
 * Neural Network Model
-* Model Comparison Dashboard
 * User Input Based Score Prediction
-* Interactive Menu Driven Application
 
 ---
 
@@ -126,7 +158,16 @@ This project demonstrates:
 * Exploratory Data Analysis
 * Feature Engineering
 * Linear Regression
+* Decision Tree Regression
+* Hyperparameter Tuning
 * Model Evaluation
-* Project Modularization in Python
+* Python Project Modularization
+* Git and GitHub Version Control
 
-This repository will be expanded with additional machine learning models and model comparison features in future versions.
+---
+
+## Conclusion
+
+Among the models implemented so far, Linear Regression achieved the best performance with an R² score of 0.7516. The results suggest that student final scores in this dataset exhibit a strong linear relationship with the selected features.
+
+The project will continue to evolve with additional machine learning models and performance comparisons.
